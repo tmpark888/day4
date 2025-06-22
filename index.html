@@ -93,14 +93,6 @@
             height: 50px;
         }
 
-        .audio-note {
-            background: rgba(255,255,255,0.15);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
-
         .mistakes-intro {
             text-align: center;
             margin-bottom: 40px;
@@ -405,15 +397,9 @@
                 <p>Разбор каждой ошибки с практическими примерами и способами избежать потерь</p>
                 <div class="audio-player">
                     <audio controls preload="metadata">
-    <source src="https://archive.org/download/4_20250622_20250622/4_20250622_20250622.mp3" type="audio/mpeg">
+    <source src="audio-lesson.mp3" type="audio/mpeg">
     Ваш браузер не поддерживает воспроизведение аудио.
 </audio>
-                </div>
-                <div class="audio-note">
-                    <p>💡 <strong>Для работы с вашим аудио файлом:</strong></p>
-                    <p>1. Загрузите MP3 файл на CDN или хостинг (например, Soundcloud, Dropbox)</p>
-                    <p>2. Замените src в коде на прямую ссылку на ваш файл</p>
-                    <p>3. GitHub не подходит для хостинга медиа файлов</p>
                 </div>
             </div>
 
@@ -576,23 +562,6 @@
                 item.style.animationDelay = `${index * 0.1}s`;
                 item.style.animation = 'fadeInUp 0.6s ease forwards';
             });
-
-            // Проверка загрузки аудио
-            const audio = document.querySelector('audio');
-            if (audio) {
-                audio.addEventListener('error', function(e) {
-                    console.log('Ошибка загрузки аудио:', e);
-                    const audioSection = document.querySelector('.audio-section');
-                    const errorDiv = document.createElement('div');
-                    errorDiv.className = 'audio-note';
-                    errorDiv.innerHTML = '<p>⚠️ <strong>Аудио файл не найден.</strong> Убедитесь, что файл загружен на доступный сервер.</p>';
-                    audioSection.appendChild(errorDiv);
-                });
-
-                audio.addEventListener('loadeddata', function() {
-                    console.log('Аудио файл успешно загружен');
-                });
-            }
         });
 
         // CSS анимации
